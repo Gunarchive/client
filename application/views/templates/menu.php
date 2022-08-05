@@ -56,7 +56,10 @@ i {
   <ul style="color: #92c67d">
     <li style="color: #92c67d;"><a href="<?= base_url(''); ?>">HOME</a></li>
     <li><a href="/forum">FORUM</a></li>
-    <li><a href="/shop">SHOP</a></li>
+    <li><a href="<?= base_url('cart '); ?>" id="cart"><i class="fa fa-shopping-cart"></i> CART</a></li>
+
     <li><a href="<?= base_url('admin'); ?>">MANAGE</a></li>
+
   </ul>
+  
 </div>
