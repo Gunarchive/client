@@ -55,7 +55,11 @@ i {
 
   <ul style="color: #92c67d">
     <li style="color: #92c67d;"><a href="<?= base_url(''); ?>">HOME</a></li>
-    <li><a href="/forum">FORUM</a></li>
+    <?php if($this->session->userdata('nama_pelanggan') != null): ?>
+    <li><a href="<?= base_url('auth/logout'); ?>">LOGOUT</a></li>
+    <?php else: ?>
+    <li><a href="<?= base_url('auth'); ?>">LOGIN</a></li>
+    <?php endif ?>
     <li><a href="<?= base_url('cart '); ?>" id="cart"><i class="fa fa-shopping-cart"></i> CART</a></li>
 
     <li><a href="<?= base_url('admin'); ?>">MANAGE</a></li>

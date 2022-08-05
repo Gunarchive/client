@@ -36,4 +36,10 @@ class Auth extends CI_Controller
             redirect('auth');
             }
     }
+    function logout()
+    {
+        $_SESSION = array();
+        session_destroy();
+        echo '<script>alert("Belu Ada Produk, Silahkan Belanja Dulu Yaa !");window.location="'.base_url().'";</script>';
+    }
 }

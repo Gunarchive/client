@@ -224,22 +224,27 @@
         <thead>
           <tr>
             <th class="first">Photo</th>
-            <th class="second">Qty</th>
+            <th class="fourth">Harga Produk</th>
             <th class="third">Nama_produk</th>
-            <th class="fourth">Total</th>
             <th class="fifth">&nbsp;</th>
+            <th class="second">Qty</th>
+            <th class="second">Total Harga</th>
           </tr>
         </thead>
         <tbody>
           <!-- shopping cart contents -->
+          <?php $harga_total = 0 ?>
+          <?php foreach($data_cart as $dc): ?>
           <tr class="productitm">
             <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
-            <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
-            <td><input type="number" value="1" min="0" max="99" class="qtyinput"></td>
-            <td>Design Bundle Package</td>
-            <td>$79.00</td>
-            <td><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></td>
+            <td><img src="<?= $dc['foto_produk'] ?>" class="thumb"></td>
+            <td>Rp. <?= number_format($dc['harga_produk'], 0,',','.'); ?></td>
+            <td><?= $dc['nama_produk']; ?></td>
+            <td><a href="<?= base_url('cart/delete/'.$dc['id_produk']) ?>"><span class="remove"><img src="https://i.imgur.com/h1ldGRr.png" alt="X"></span></a></td>
+            <td><input type="text" value="<?= $dc['quantity'] ?>" class="qtyinput"></td>
+            <td>Rp. <?= number_format($dc['total_harga'], 0,',','.'); ?></td>
           </tr>
+          <?php endforeach ?>
           
           <!-- Diambil dari tabel ongkir -->
           <tr class="extracosts">
@@ -251,12 +256,14 @@
           <tr class="totalprice">
             <td class="light">Total:</td>
             <td colspan="2">&nbsp;</td>
-            <td colspan="2"><span class="thick">$225.45</span></td>
+            <td colspan="2"><span class="thick">Rp. <?= number_format(array_sum(array_column($data_cart,'total_harga')), 0,',','.'); ?></span></td>
           </tr>
           
           <!-- checkout btn -->
           <tr class="checkoutrow">
             <td colspan="5" class="checkout"><button id="submitbtn">Checkout Now!</button></td>
+            <td colspan="5" class="checkout"><button id="submitbtn">update chart</button></td>
+
           </tr>
         </tbody>
       </table>

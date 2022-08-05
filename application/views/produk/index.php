@@ -400,7 +400,7 @@ body {
                                                 <div class="h-bg-inner"></div>
                                             </div>
 
-                                            <a class="cart" href="#">
+                                            <a class="cart" href="<?= base_url('cart/postcart/'.$row['id_produk']) ?>">
                                                 <span class="price">Rp.<?= number_format($row['harga_produk'], 0, ',', '.') ?></span>
                                                 
                                                 <span class="add-to-cart">
