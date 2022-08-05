@@ -12,7 +12,7 @@ class kategori_model extends CI_Model
     {
         parent::__construct();
         $this->_guzzle = new Client([
-            'base_uri' => 'http://localhost/Tugas_besar_pemg/restServer/API/kategori',
+            'base_uri' => 'http://localhost/pemograman-3/Tugas_Besar/restServer/api/kategori',
             'auth'  => ['admin', '1234']        ]);
     }
 

@@ -13,7 +13,7 @@ class produk_model extends CI_Model
         parent::__construct();
         $this->_guzzle = new Client([
             // Base URI is used with relative requests
-            'base_uri' => 'http://localhost/Tugas_besar_pemg/restServer/API/produk',
+            'base_uri' => 'http://localhost/pemograman-3/Tugas_Besar/restServer/api/produk',
             'auth'  => ['admin', '1234']
         ]);
     }
