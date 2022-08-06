@@ -235,6 +235,7 @@
           <!-- shopping cart contents -->
           <?php $harga_total = 0 ?>
           <?php foreach($data_cart as $dc): ?>
+            <?php if($dc['status'] == null): ?>
           <tr class="productitm">
             <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
             <td><img src="<?= $dc['foto_produk'] ?>" class="thumb"></td>
@@ -244,6 +245,7 @@
             <td><input type="text" value="<?= $dc['quantity'] ?>" class="qtyinput"></td>
             <td>Rp. <?= number_format($dc['total_harga'], 0,',','.'); ?></td>
           </tr>
+            <?php endif ?>
           <?php endforeach ?>
           
           <!-- Diambil dari tabel ongkir -->
@@ -261,7 +263,7 @@
           
           <!-- checkout btn -->
           <tr class="checkoutrow">
-            <td colspan="5" class="checkout"><button id="submitbtn">Checkout Now!</button></td>
+            <td colspan="5" class="checkout"><a href="<?= base_url('checkout') ?>" id="submitbtn"><button>Checkout</button></a></td>
             <td colspan="5" class="checkout"><button id="submitbtn">update chart</button></td>
 
           </tr>

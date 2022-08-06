@@ -20,8 +20,10 @@ class cart extends CI_Controller
         }else{
             $id_pelanggan = $this->session->userdata('id_pelanggan');
             $data['data_cart'] = $this->cart_model->getAll($id_pelanggan);
-            if($data['data_cart'] == NULL){
+
+            if($data['data_cart'] == null){
                 echo '<script>alert("Belu Ada Produk, Silahkan Belanja Dulu Yaa !");window.location="'.base_url().'";</script>';
+                // var_dump($data['data_cart']);
             }else{
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/menu');
@@ -32,8 +34,6 @@ class cart extends CI_Controller
     }
     public function postcart()
     {
-        $id_pelanggan = $this->session->userdata('id_pelanggan');
-        $fromdb = $this->cart_model->getAll($id_pelanggan);
 
         $data = [
             "id_produk" => $this->uri->segment('3'),
@@ -45,7 +45,8 @@ class cart extends CI_Controller
         $post = $this->cart_model->postcart($data);
         if($post){
             echo '<script>alert("Produk Dimasukan Ke cart!");window.location="'.base_url('cart').'";</script>';
-            // var_dump($fromdb[0]);
+        }else{
+            echo '<script>alert("GAGAL Mungkin Anda Belum L!");window.location="'.base_url('cart').'";</script>';
         }
     }
 
